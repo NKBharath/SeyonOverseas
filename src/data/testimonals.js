@@ -26,4 +26,15 @@ const reviews = [
     }
 ]
 
-export default reviews;
+const VideoReviews = [
+    {
+        id: 1,
+        country: "Canada",
+        name: "Jane Smith",
+        university: "University of Toronto",
+        discription: "From India to Canada Success Story",
+        url: "https://www.youtube.com/embed/9bZkp7q19f0", 
+    }
+]
+
+export { reviews, VideoReviews };

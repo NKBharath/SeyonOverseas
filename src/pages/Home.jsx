@@ -1,14 +1,16 @@
 import { Helmet } from "react-helmet-async";
-import Destinations from "../data/Destinations";
-import Services from "../data/Services";
-import reviews from "../data/testimonals";
+import Countries from "../data/Destinations";
+import {ServicesData} from "../data/Services";
+import {reviews} from "../data/testimonals";
+import eligibility from "../data/eligibility";
+import { LuCircleCheckBig } from "react-icons/lu";
+import Footer from "../Components/Footeer";
 function Home() {
   return (
     <div className="">
       <Helmet>
         <title>Seyon Overseas | Study Abroad Without Stress</title>
         <meta name="description" content="Study Abroad without stress" />
-
         <meta
           property="og:title"
           content="Seyon Overseas | Study Abroad Without Stress"
@@ -82,16 +84,16 @@ function Home() {
           Choose from the world's top education destinations. Each country
           offers unique opportunities for growth and success.
         </p>
-        {Destinations.map((destination) => (
+        {Countries.map((country) => (
           <div
-            key={destination.id}
+            key={country.id}
             className="bg-[rgb(255,255,255)] border-[0.8px] border-[rgb(243,244,246)] rounded-2xl p-[22.5px] mb-5 shadow-md"
           >
             <h3 className="text-[rgb(24,31,37)] text-[18.75px] font-bold mb-2.75">
-              {destination.name}
+              {country.name}
             </h3>
             <ul className="ml-4 list-disc marker:text-[rgb(53,212,159)]">
-              {destination.benefits.map((benefit, index) => (
+              {country.benefits.map((benefit, index) => (
                 <li
                   key={index}
                   className="text-[rgb(91,102,113)] text-[14px] mt-[7.5px] leading-[18.75px]"
@@ -114,7 +116,7 @@ function Home() {
         <p className="text-[rgb(91,102,113)] text-[16.875px] text-center">
           Comprehensive support at every step of your study abroad journey
         </p>
-        {Services.map((service) => {
+        {ServicesData.map((service) => {
           const Icon = service.icon;
           return (
             <div
@@ -168,7 +170,7 @@ function Home() {
                 "{review.review}"
               </p>
               <div className="flex flex-row items-center gap-[15px]">
-                <div className="bg-gradient-to-r from-[#0064F0] to-[#35D49F]  p-3 w-10 h-10  flex items-center justify-center rounded-full text-white text-[15px] font-bold">
+                <div className="bg bg-gradient-to-r from-[#0064F0] to-[#35D49F]  p-3 w-10 h-10  flex items-center justify-center rounded-full text-white text-[15px] font-bold">
                   R
                 </div>
                 <div>
@@ -193,6 +195,65 @@ function Home() {
           A clear roadmap to your international education success
         </p>
       </div>
+      {/* Check Eligibility */}
+      <div className="py-[60px] px-[15px]">
+        <h2 className="text-[rgb(24,31,37)] text-[28.125px] font-bold mb-3.75 text-left">
+          Check your eligibility
+        </h2>
+        <p className="text-[rgb(91,102,113)] leading-[25.25px] text-[16.875px] font-normal text-left mb-[30px]">
+          Not sure if you're eligible? Our expert consultants will assess your
+          profile and recommend the best universities and countries for you.
+        </p>
+        {eligibility.map((item) => (
+          <div key={item.id} className="flex gap-2  mb-1.5">
+            <LuCircleCheckBig className="text-green-500 text-[20px] mt-1" />
+            <p className="text-[15px] font-normal ">{item.discription}</p>
+          </div>
+        ))}
+      </div>
+      <div className=" px-[15px]">
+        <div className="p-[30px] bg-[rgb(255,255,255)] rounded-[15px] ">
+          <h2 className="text-[rgb(24,31,37)] font-bold text-[22.5px] mb-[22.5px]">
+            Free Eligibility Check
+          </h2>
+          <input
+            type="text"
+            id="name"
+            placeholder="Your Name"
+            className="border-[0.8px] border-[rgb(229,231,235)] placeholder:text-[rgb(24,31,37)] rounded-[11.25px] placeholder:text-[15px] w-full px-[15px] py-[11.25px] mb-5"
+          />
+          <input
+            type="email"
+            id="email"
+            placeholder="Your Email Address"
+            className="border-[0.8px] border-[rgb(229,231,235)] placeholder:text-[rgb(24,31,37)] rounded-[11.25px] placeholder:text-[15px] w-full px-[15px] py-[11.25px] mb-5"
+          />
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Your Phone Number"
+            className="border-[0.8px] border-[rgb(229,231,235)] placeholder:text-[rgb(24,31,37)] rounded-[11.25px] placeholder:text-[15px] w-full px-[15px] py-[11.25px] mb-5"
+          />
+          <select
+            name="country"
+            id=""
+            className="border-[0.8px] border-[rgb(229,231,235)] placeholder:text-[rgb(24,31,37)] rounded-[11.25px] placeholder:text-[15px] w-full px-[15px] py-[11.25px] mb-5"
+          >
+            <option value="">Select Your Country</option>
+            <option value="usa">United States</option>
+            <option value="canada">Canada</option>
+            <option value="uk">United Kingdom</option>
+          </select>
+          <button className="bg-[rgb(29,78,216)] text-white w-full p-[15px] text-[15px] font-bold rounded-2xl">Check My Eligibility</button>
+        </div>
+      </div>
+      <div className="bg-gradient-to-r from-[#0064F0] to-[#35D49F] py-[60px] px-[15px] flex flex-col items-center">
+        <h2 className="text-white text-[28.125px] font-bold leading-[33.75px] text-center mb-4.75">Ready to Transform Your Future?</h2>
+        <p className="text-[rgb(239,246,255)] text-[16.875px] leading-[26px] text-center max-w-[630px] mb-[30px]">Start your study abroad journey today with expert guidance and support</p>
+        <button className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit ">Book Free Consultation </button>
+      </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
