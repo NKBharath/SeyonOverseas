@@ -5,6 +5,7 @@ import {reviews} from "../data/testimonals";
 import eligibility from "../data/eligibility";
 import { LuCircleCheckBig } from "react-icons/lu";
 import Footer from "../Components/Footeer";
+import Header from "../Components/Header";
 function Home() {
   return (
     <div className="">
@@ -20,6 +21,7 @@ function Home() {
           content="Best Overseas consultancy company in Namakkal"
         />
       </Helmet>
+      <Header />
       {/* Hero Section */}
       <div className=" px-[15px] py-[75px] bg bg-linear-to-r from-[#1E3A8A] to-[#1E293B] h-fit ">
         <h1 className="text-white text-[33.75px] font-bold leading-[37.5px] mb-[22.5px] font-poppins font-sans">
@@ -28,11 +30,11 @@ function Home() {
         <h2 className="text-[rgb(134,239,172)] text-[18.75px] font-semibold leading-[26.25px] mb-[15px] ">
           End-to-end guidance for your international education
         </h2>
-        <p className="text-[rgb(219,234,254)] text-[16.875px] leading-[27.421px] mb-[22.5px]">
+        <p className="text-[rgb(219,234,254)] text-[16.875px] leading-[27.421px] mb-[22.5px] md:max-w-[650px]">
           Join thousands of students who have successfully studied abroad with
           our expert consultancy. We make your dream education a reality.
         </p>
-        <div className="grid grid-cols-2 gap-6 border-t border-b border-[rgb(239,241,250)] pt-3 pb-4">
+        <div className="grid grid-cols-2 gap-6 border-t border-b border-[rgb(239,241,250)] pt-3 pb-4 md:grid-cols-4 md:py-8 md:text-center">
           <div>
             <h2 className="text-[rgb(134,239,172)] text-[28.125px] font-bold ">
               98%
@@ -66,7 +68,7 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-4 pt-[25px]">
+        <div className="flex flex-col gap-4 pt-[25px] md:flex-row md:justify-center">
           <button className="bg-[rgb(22,163,74)] text-white px-6 py-3 rounded-md text-[16.675px] font-bold">
             Book Free Consultation
           </button>
@@ -80,14 +82,14 @@ function Home() {
         <h2 className="text-[rgb(24,31,37)] text-[28.125px] font-bold leading-8.25 text-center mb-3.75">
           Popular Study Destinations
         </h2>
-        <p className="text-[rgb(91,102,113)] text-[16.875px] leading-[26.25px] ">
+        <p className="text-[rgb(91,102,113)] text-[16.875px] leading-[26.25px] mb-7.5  text-center mx-auto md:max-w-[630px]">
           Choose from the world's top education destinations. Each country
           offers unique opportunities for growth and success.
         </p>
         {Countries.map((country) => (
           <div
             key={country.id}
-            className="bg-[rgb(255,255,255)] border-[0.8px] border-[rgb(243,244,246)] rounded-2xl p-[22.5px] mb-5 shadow-md"
+            className="bg-[rgb(255,255,255)] border-[0.8px] border-[rgb(243,244,246)] rounded-2xl p-[22.5px] mb-5 shadow-md md:max-w-[600px] md:mx-auto"
           >
             <h3 className="text-[rgb(24,31,37)] text-[18.75px] font-bold mb-2.75">
               {country.name}
@@ -121,7 +123,7 @@ function Home() {
           return (
             <div
               key={service.id}
-              className="bg-white border-[0.8px] border-[rgb(243,244,246)] shadow-md rounded-2xl mt-5 p-[22.5px]"
+              className="bg-white border-[0.8px] border-[rgb(243,244,246)] shadow-md rounded-2xl mt-5 p-[22.5px] md:max-w-[600px] md:mx-auto"
             >
               <Icon className="text-[rgb(0,100,240)] text-[30px] mb-3.75" />
               <h3 className="text-[rgb(24,31,37)] text-[18.75px] font-bold mb-2.75">
@@ -150,7 +152,7 @@ function Home() {
           return (
             <div
               key={review.id}
-              className="bg-[rgb(30,41,59)] border border-[rgb(51,65,85)] rounded-[15px] mt-5 p-[22.5px]"
+              className="bg-[rgb(30,41,59)] border border-[rgb(51,65,85)] rounded-[15px] mt-5 p-[22.5px] md:max-w-[600px] md:mx-auto"
             >
               <p className="mb-[15px] flex ">
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -187,25 +189,25 @@ function Home() {
         })}
       </div>
       {/* Our Step Process */}
-      <div className="py-[60px] px-[15px]">
+      {/* <div className="py-[60px] px-[15px]">
         <h2 className="text-black text-[28.125px] font-bold mb-3.75 text-center">
           Our Step Process
         </h2>
         <p className="text-[rgb(91,102,113)] leading-[26.25px] text-[16.875px] font-normal text-center">
           A clear roadmap to your international education success
         </p>
-      </div>
+      </div> */}
       {/* Check Eligibility */}
-      <div className="py-[60px] px-[15px]">
-        <h2 className="text-[rgb(24,31,37)] text-[28.125px] font-bold mb-3.75 text-left">
+      <div className="py-[60px] px-[15px] ">
+        <h2 className="text-[rgb(24,31,37)] text-[28.125px] font-bold mb-3.75 text-left md:text-center">
           Check your eligibility
         </h2>
-        <p className="text-[rgb(91,102,113)] leading-[25.25px] text-[16.875px] font-normal text-left mb-[30px]">
+        <p className="text-[rgb(91,102,113)] leading-[25.25px] text-[16.875px] font-normal text-left mb-[30px] md:text-center md:max-w-[630px] md:mx-auto">
           Not sure if you're eligible? Our expert consultants will assess your
           profile and recommend the best universities and countries for you.
         </p>
         {eligibility.map((item) => (
-          <div key={item.id} className="flex gap-2  mb-1.5">
+          <div key={item.id} className="flex gap-2  mb-1.5 md:ml-[225px]">
             <LuCircleCheckBig className="text-green-500 text-[20px] mt-1" />
             <p className="text-[15px] font-normal ">{item.discription}</p>
           </div>

@@ -34,6 +34,20 @@ const VideoReviews = [
         university: "University of Toronto",
         discription: "From India to Canada Success Story",
         url: "https://www.youtube.com/embed/9bZkp7q19f0", 
+    },{
+        id: 2,
+        country: "UK",
+        name: "Emily Johnson",
+        university: "University of Oxford",
+        discription: "From India to UK Success Story",
+        url: "https://www.youtube.com/embed/9bZkp7q19f0",
+    },{
+        id: 3,
+        country: "Australia",
+        name: "Michael Brown",
+        university: "University of Melbourne",
+        discription: "From India to Australia Success Story",
+        url: "https://www.youtube.com/embed/9bZkp7q19f0",
     }
 ]
 

@@ -1,9 +1,9 @@
-import { FaRegChartBar } from "react-icons/fa";
+import { FaRegChartBar, FaWhatsapp } from "react-icons/fa";
 import { IoDocumentAttachOutline, IoDocumentTextOutline } from "react-icons/io5";
-import { MdOutlineAccessTime, MdOutlineCurrencyRupee } from "react-icons/md";
+import { MdOutlineAccessTime, MdOutlineCurrencyRupee, MdMailOutline } from "react-icons/md";
 import { RiBankLine, RiTeamFill } from "react-icons/ri";
 import { TiTickOutline } from "react-icons/ti";
-
+import { IoCall } from "react-icons/io5";
 const ServicesData = [
     {
         id: 1,
@@ -75,4 +75,29 @@ const whyourServices = [
         description: "100% visa success rate and 5000+ students placed"
     }
 ]
-export  { ServicesData, whyourServices };
+
+const ContactData = [
+    {
+        id: 1,
+        icon: IoCall,
+        title: "Call Us",
+        description: "Speak directly with our expert counselors",
+        contact: "+91 00000 00000",
+        time: "Mon-Fri, 9 AM - 6 PM"
+    },{
+        id: 2,
+        icon: MdMailOutline,
+        title: "Email Us",
+        description: "Send us your queries and documents",
+        contact: "@gmail.com",
+        time: "Response within 24 hours"
+    },{
+        id: 3,
+        icon: FaWhatsapp,
+        title: "WhatsApp",
+        description: "Quick message for instant response",
+        contact: "+91 00000 00000",
+        time: "Always available"
+    }
+]
+export  { ServicesData, whyourServices, ContactData };
