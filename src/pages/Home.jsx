@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import Countries from "../data/Destinations";
-import {ServicesData} from "../data/Services";
-import {reviews} from "../data/testimonals";
+import { ServicesData } from "../data/Services";
+import { reviews } from "../data/testimonals";
 import eligibility from "../data/eligibility";
 import { LuCircleCheckBig } from "react-icons/lu";
 import Footer from "../Components/Footeer";
@@ -86,58 +86,62 @@ function Home() {
           Choose from the world's top education destinations. Each country
           offers unique opportunities for growth and success.
         </p>
-        {Countries.map((country) => (
-          <div
-            key={country.id}
-            className="bg-[rgb(255,255,255)] border-[0.8px] border-[rgb(243,244,246)] rounded-2xl p-[22.5px] mb-5 shadow-md md:max-w-[600px] md:mx-auto"
-          >
-            <h3 className="text-[rgb(24,31,37)] text-[18.75px] font-bold mb-2.75">
-              {country.name}
-            </h3>
-            <ul className="ml-4 list-disc marker:text-[rgb(53,212,159)]">
-              {country.benefits.map((benefit, index) => (
-                <li
-                  key={index}
-                  className="text-[rgb(91,102,113)] text-[14px] mt-[7.5px] leading-[18.75px]"
-                >
-                  {benefit}
-                </li>
-              ))}
-            </ul>
-            <button className="text-center w-full bg-[rgb(239,246,255)] text-[rgb(0,100,240)] border-[1.6px] border-[rgb(0,100,240)] text-[15px] px-[22.5px] py-[11.25px] rounded-md font-semibold mt-5">
-              Explore
-            </button>
-          </div>
-        ))}
+        <div className=" grid md:grid-cols-2 gap-x-5 lg:grid-cols-3 xl:grid-cols-4">
+          {Countries.map((country) => (
+            <div
+              key={country.id}
+              className="bg-[rgb(255,255,255)] border-[0.8px] border-[rgb(243,244,246)] rounded-2xl p-[22.5px] mb-5 shadow-md md:max-w-[600px] md:mx-auto "
+            >
+              <h3 className="text-[rgb(24,31,37)] text-[18.75px] font-bold mb-2.75">
+                {country.name}
+              </h3>
+              <ul className="ml-4 list-disc marker:text-[rgb(53,212,159)]">
+                {country.benefits.map((benefit, index) => (
+                  <li
+                    key={index}
+                    className="text-[rgb(91,102,113)] text-[14px] mt-[7.5px] leading-[18.75px]"
+                  >
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+              <button className="text-center w-full bg-[rgb(239,246,255)] text-[rgb(0,100,240)] border-[1.6px] border-[rgb(0,100,240)] text-[15px] px-[22.5px] py-[11.25px] rounded-md font-semibold mt-5">
+                Explore
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
       {/*Services Section */}
       <div className="px-[15px] py-[30px] bg-[#f0f6ff]">
         <h2 className="text-[rgb(24,31,37)] text-[28.125px] font-bold text-center mb-3.75">
           Our Services
         </h2>
-        <p className="text-[rgb(91,102,113)] text-[16.875px] text-center">
+        <p className="text-[rgb(91,102,113)] text-[16.875px] text-center mb-7.5">
           Comprehensive support at every step of your study abroad journey
         </p>
-        {ServicesData.map((service) => {
-          const Icon = service.icon;
-          return (
-            <div
-              key={service.id}
-              className="bg-white border-[0.8px] border-[rgb(243,244,246)] shadow-md rounded-2xl mt-5 p-[22.5px] md:max-w-[600px] md:mx-auto"
-            >
-              <Icon className="text-[rgb(0,100,240)] text-[30px] mb-3.75" />
-              <h3 className="text-[rgb(24,31,37)] text-[18.75px] font-bold mb-2.75">
-                {service.name}
-              </h3>
-              <p className="text-[rgb(91,102,113)] text-[15px] leading-[24.375px] mb-[22.5px]">
-                {service.description}
-              </p>
-              <h4 className="text-[rgb(0,100,240)] font-semibold text-[15px]">
-                Learn More
-              </h4>
-            </div>
-          );
-        })}
+        <div className="px-[15px] grid lg:grid-cols-2 lg:gap-8 xl:grid-cols-3 xl:gap-y-10">
+          {ServicesData.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={service.id}
+                className="bg-white border-[0.8px] border-[rgb(243,244,246)] shadow-md rounded-2xl mt-5 p-[22.5px] md:w-[600px] md:mx-auto lg:mt-0 lg:w-full "
+              >
+                <Icon className="text-[rgb(0,100,240)] text-[30px] mb-3.75" />
+                <h3 className="text-[rgb(24,31,37)] text-[18.75px] font-bold mb-2.75">
+                  {service.name}
+                </h3>
+                <p className="text-[rgb(91,102,113)] text-[15px] leading-[24.375px] mb-[22.5px] ">
+                  {service.description}
+                </p>
+                <h4 className="text-[rgb(0,100,240)] font-semibold text-[15px]">
+                  Learn More
+                </h4>
+              </div>
+            );
+          })}
+        </div>
       </div>
       {/* Success Stories */}
       <div className="bg-[rgb(2,16,37)] py-[60px] px-[15px] ">
@@ -148,45 +152,47 @@ function Home() {
           Read inspiring stories from students who have achieved their dreams
           with our guidance
         </p>
-        {reviews.map((review) => {
-          return (
-            <div
-              key={review.id}
-              className="bg-[rgb(30,41,59)] border border-[rgb(51,65,85)] rounded-[15px] mt-5 p-[22.5px] md:max-w-[600px] md:mx-auto"
-            >
-              <p className="mb-[15px] flex ">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    className={
-                      star <= review.rating
-                        ? "text-yellow-500"
-                        : "text-gray-300"
-                    }
-                  >
-                    ★
-                  </span>
-                ))}
-              </p>
-              <p className="text-[rgb(219,234,254)] text-[15px] leading-[24.375px] italic mb-[22.5px]">
-                "{review.review}"
-              </p>
-              <div className="flex flex-row items-center gap-[15px]">
-                <div className="bg bg-gradient-to-r from-[#0064F0] to-[#35D49F]  p-3 w-10 h-10  flex items-center justify-center rounded-full text-white text-[15px] font-bold">
-                  R
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-[15px]">
-                    {review.name}
-                  </h3>
-                  <p className="text-[#93C5FD] text-[14px]">
-                    {review.university}
-                  </p>
+        <div className=" grid md:grid-cols-2 gap-x-5 lg:grid-cols-3 xl:grid-cols-4">
+          {reviews.map((review) => {
+            return (
+              <div
+                key={review.id}
+                className="bg-[rgb(30,41,59)] border border-[rgb(51,65,85)] rounded-[15px] mt-5 p-[22.5px] md:max-w-[600px] md:mx-auto"
+              >
+                <p className="mb-[15px] flex ">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span
+                      key={star}
+                      className={
+                        star <= review.rating
+                          ? "text-yellow-500"
+                          : "text-gray-300"
+                      }
+                    >
+                      ★
+                    </span>
+                  ))}
+                </p>
+                <p className="text-[rgb(219,234,254)] text-[15px] leading-[24.375px] italic mb-[22.5px]">
+                  "{review.review}"
+                </p>
+                <div className="flex flex-row items-center gap-[15px]">
+                  <div className="bg bg-gradient-to-r from-[#0064F0] to-[#35D49F]  p-3 w-10 h-10  flex items-center justify-center rounded-full text-white text-[15px] font-bold">
+                    R
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-[15px]">
+                      {review.name}
+                    </h3>
+                    <p className="text-[#93C5FD] text-[14px]">
+                      {review.university}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
       {/* Our Step Process */}
       {/* <div className="py-[60px] px-[15px]">
@@ -198,7 +204,7 @@ function Home() {
         </p>
       </div> */}
       {/* Check Eligibility */}
-      <div className="py-[60px] px-[15px] ">
+      {/* <div className="py-[60px] px-[15px] ">
         <h2 className="text-[rgb(24,31,37)] text-[28.125px] font-bold mb-3.75 text-left md:text-center">
           Check your eligibility
         </h2>
@@ -246,13 +252,21 @@ function Home() {
             <option value="canada">Canada</option>
             <option value="uk">United Kingdom</option>
           </select>
-          <button className="bg-[rgb(29,78,216)] text-white w-full p-[15px] text-[15px] font-bold rounded-2xl">Check My Eligibility</button>
+          <button className="bg-[rgb(29,78,216)] text-white w-full p-[15px] text-[15px] font-bold rounded-2xl">
+            Check My Eligibility
+          </button>
         </div>
-      </div>
+      </div> */}
       <div className="bg-gradient-to-r from-[#0064F0] to-[#35D49F] py-[60px] px-[15px] flex flex-col items-center">
-        <h2 className="text-white text-[28.125px] font-bold leading-[33.75px] text-center mb-4.75">Ready to Transform Your Future?</h2>
-        <p className="text-[rgb(239,246,255)] text-[16.875px] leading-[26px] text-center max-w-[630px] mb-[30px]">Start your study abroad journey today with expert guidance and support</p>
-        <button className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit ">Book Free Consultation </button>
+        <h2 className="text-white text-[28.125px] font-bold leading-[33.75px] text-center mb-4.75">
+          Ready to Transform Your Future?
+        </h2>
+        <p className="text-[rgb(239,246,255)] text-[16.875px] leading-[26px] text-center max-w-[630px] mb-[30px]">
+          Start your study abroad journey today with expert guidance and support
+        </p>
+        <button className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit ">
+          Book Free Consultation{" "}
+        </button>
       </div>
       {/* Footer */}
       <Footer />

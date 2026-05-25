@@ -7,21 +7,19 @@ function Header() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Destinations", path: "/destinations" },
-    { name: "Courses", path: "/courses" },
-    { name: "Universities", path: "/universities" },
     { name: "Services", path: "/services" },
-    { name: "Success Stories", path: "/success-stories" },
-    { name: "Blog", path: "/blog" },
+    { name: "Reviews", path: "/Reviews" },
+    //{ name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
   ];
 
   return (
     <header className="w-full sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-[75px]">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-[#0064F0] to-[#35D49F] text-transparent bg-clip-text">
-              OverseasEdu
-            </h1>
+      <div className="max-w-7xl mx-auto px-4 py-3 lg:px-8">
+        <div className="flex items-center justify-between h-[75 px]">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-[#0064F0] to-[#35D49F] text-transparent bg-clip-text">
+            Seyon Overseas
+          </h1>
 
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((item) => (
