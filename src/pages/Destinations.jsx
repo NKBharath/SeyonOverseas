@@ -3,15 +3,72 @@ import Countries from "../data/Destinations";
 import { FiDollarSign } from "react-icons/fi";
 import Footer from "../Components/Footeer";
 import Header from "../Components/Header";
-
+import { Helmet } from "react-helmet-async";
+import FAQSection from "../Components/FAQSection";
+import { destinationFAQ } from "../data/faq";
+import { useNavigate } from "react-router-dom";
 function Destinations() {
+  const navigate = useNavigate();
   return (
     <div>
+      <Helmet>
+        <title>
+          Study Abroad Destinations | Canada, UK, USA, Australia | Seyon
+          Overseas
+        </title>
+
+        <meta
+          name="description"
+          content="Explore top study abroad destinations including Canada, UK, USA, Australia, Germany and more with Seyon Overseas. Get expert guidance for admissions, visas, scholarships and career opportunities."
+        />
+
+        <meta
+          name="keywords"
+          content="Study abroad destinations, Study in Canada, Study in UK, Study in USA, Study in Australia, Overseas education consultancy in Namakkal, Seyon Overseas"
+        />
+
+        <meta name="author" content="Seyon Overseas" />
+
+        <meta name="robots" content="index, follow" />
+
+        <meta
+          property="og:title"
+          content="Top Study Abroad Destinations | Seyon Overseas"
+        />
+
+        <meta
+          property="og:description"
+          content="Discover the best countries for studying abroad including Canada, UK, USA and Australia with expert overseas education guidance from Seyon Overseas."
+        />
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:url"
+          content="https://seyonoverseas.in/destinations"
+        />
+        <link rel="canonical" href="https://seyonoverseas.in/destinations" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: destinationFAQ.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          })}
+        </script>
+      </Helmet>
       <Header />
       <div className="mt-[30px]">
         <h1 className="text-[rgb(24,31,37)] font-bold text-center text-[33.75px] leading-[37.5px] mb-5.5">
           Study Destinations Worldwide
         </h1>
+
         <p className="text-[rgb(91,102,113)] text-[18.75px] text-center leading-[26.25px] max-w-[720px] mb-[30px] md:max-w-[600px] mx-auto">
           Explore the world's best study destinations. Each country offers
           unique opportunities for growth, learning, and career development.
@@ -26,10 +83,10 @@ function Destinations() {
               >
                 <div className="flex justify-between">
                   <div className="text-[rgb(24,31,37)]">
-                    <h2 className="text-[25.75px] font-bold">
+                    <h3 className="text-[25.75px] font-bold">
                       {country.c_code}
-                    </h2>
-                    <h2 className="text-[17.75px] font-bold">{country.name}</h2>
+                    </h3>
+                    <h3 className="text-[17.75px] font-bold">{country.name}</h3>
                   </div>
                   <div>
                     <p className="text-[rgb(0,100,240)] font-bold text-[25.75px] text-right">
@@ -39,17 +96,17 @@ function Destinations() {
                   </div>
                 </div>
                 <div className="bg-[rgb(239,246,255)] p-3.75 my-3 rounded-2xl">
-                  <h2 className="text-[rgb(91,102,113)] text-[14px] mb-[3.75px]">
+                  <h3 className="text-[rgb(91,102,113)] text-[14px] mb-[3.75px]">
                     Average Cost
-                  </h2>
+                  </h3>
                   <p className="text-[rgb(24,31,37)] font-bold">
                     {country.Average_Cost}
                   </p>
                 </div>
                 <div className="mb-5.5">
-                  <h2 className="text-[rgb(24,31,37)] font-semibold mb-2.75">
+                  <h3 className="text-[rgb(24,31,37)] font-semibold mb-2.75">
                     Key Benefits:
-                  </h2>
+                  </h3>
                   <ul className="list-disc marker:text-[rgb(53,212,159)] pl-5">
                     {country.benefits.map((benefit, index) => (
                       <li
@@ -63,25 +120,25 @@ function Destinations() {
                 </div>
                 <div className="flex justify-between px-2">
                   <div className="text-center">
-                    <h2 className="text-[rgb(0,100,240)] font-bold">
+                    <h3 className="text-[rgb(0,100,240)] font-bold">
                       {country.Universities}
-                    </h2>
+                    </h3>
                     <p className="text-[rgb(91,102,113)] text-[14px]">
                       Universities
                     </p>
                   </div>
                   <div className="text-center">
-                    <h2 className="text-[rgb(53,212,159)] font-bold">
+                    <h3 className="text-[rgb(53,212,159)] font-bold">
                       {country.Indian_Students}
-                    </h2>
+                    </h3>
                     <p className="text-[rgb(91,102,113)] text-[14px]">
                       Students
                     </p>
                   </div>
                   <div className="text-center">
-                    <h2 className="text-[rgb(0,100,240)] font-bold">
+                    <h3 className="text-[rgb(0,100,240)] font-bold">
                       {country.Courses}
-                    </h2>
+                    </h3>
                     <p className="text-[rgb(91,102,113)] text-[14px]">
                       Courses
                     </p>
@@ -98,10 +155,10 @@ function Destinations() {
           <div className="flex flex-col items-center lg:flex-row xl:max-w-[1200px] lg:mx-auto ">
             <div className="flex flex-col items-center mt-4">
               <div className="bg-[rgb(12,99,238)] rounded-full p-4 text-white text-3xl ">
-                <TfiStatsUp />
+                <TfiStatsUp aria-hidden="true" />
               </div>
               <h3 className="text-[18.75px] font-bold mb-3 mt-3.75">
-                Carrer Growth
+                Career Growth
               </h3>
               <p className="text-[rgb(91,102,113)] text-[15px] leading-[22.5px] text-center md:max-w-[600px]">
                 Access global job markets and international career opportunities
@@ -110,7 +167,7 @@ function Destinations() {
             </div>
             <div className="flex flex-col items-center mt-4">
               <div className="bg-[rgb(53,212,159)] rounded-full p-3 text-white text-4xl ">
-                <TfiWorld />
+                <TfiWorld aria-hidden="true" />
               </div>
               <h3 className="text-[18.75px] font-bold mb-3 mt-3.75">
                 Global Network
@@ -122,7 +179,7 @@ function Destinations() {
             </div>
             <div className="flex flex-col items-center mt-4">
               <div className="bg-[rgb(12,99,238)] rounded-full p-4 text-white text-3xl ">
-                <FiDollarSign />
+                <FiDollarSign aria-hidden="true" />
               </div>
               <h3 className="text-[18.75px] font-bold mb-3 mt-3.75">
                 Value for Money
@@ -142,13 +199,17 @@ function Destinations() {
             Our expert consultants will help you select the perfect country and
             university based on your profile and goals.
           </p>
-          <button className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit ">
+          <button
+            onClick={() => navigate("/contact")}
+            className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit "
+          >
             Book Free Consultation{" "}
           </button>
         </div>
+        <FAQSection faqData={destinationFAQ} />
         {/* Footer */}
         <Footer />
-     </div>
+      </div>
     </div>
   );
 }

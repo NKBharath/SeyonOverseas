@@ -2,7 +2,10 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footeer";
 import { ContactData } from "../data/Services";
 import { useState } from "react";
-
+import FAQSection from "../Components/FAQSection";
+import { contactFAQ, servicesFAQ } from "../data/faq";
+import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 function Contact() {
   const [result, setResult] = useState("");
 
@@ -50,17 +53,55 @@ function Contact() {
   return (
     <div>
       <Header />
+      <Helmet>
+        <title>Contact Us | Seyon Overseas</title>
 
+        <meta
+          name="description"
+          content="Get in touch with Seyon Overseas for expert guidance on studying abroad. Contact us for personalized consultations, admissions support, visa assistance and more."
+        />
+        <meta
+          name="keywords"
+          content="Contact Seyon Overseas, Study abroad consultancy contact, Overseas education support, Study abroad guidance, Contact for study abroad assistance"
+        />
+        <meta name="author" content="Seyon Overseas" />
+        <meta name="robots" content="index, follow" />
+        <meta
+          property="og:title"
+          content="Contact Seyon Overseas for Study Abroad Guidance and Support"
+        />
+        <meta
+          property="og:description"
+          content="Get in touch with Seyon Overseas for expert guidance on studying abroad. Contact us for personalized consultations, admissions support, visa assistance and more."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://seyonoverseas.in/contact" />
+        <link rel="canonical" href="https://seyonoverseas.in/contact" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: contactFAQ.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          })}
+        </script>
+      </Helmet>
       {/* Heading */}
       <div className="px-[15px] mt-[40px]">
         <h1 className="text-[rgb(24,31,37)] font-bold text-center text-[30.75px] leading-[37.5px] mb-5">
-          Student Success Stories
+          Contact Seyon Overseas
         </h1>
 
         <p className="text-[rgb(91,102,113)] text-[16.75px] text-center leading-[26.25px] mb-[30px] md:max-w-[600px] mx-auto">
-          Read inspiring stories from students who have successfully studied
-          abroad and achieved their dreams with our guidance. Their success is
-          our greatest achievement.
+          Get expert guidance for studying abroad. Contact our team for
+          admissions, visa assistance, scholarships, and personalized
+          counseling.
         </p>
       </div>
 
@@ -77,7 +118,7 @@ function Contact() {
                   className="bg-white shadow-[0px_0px_10px_rgba(0,0,0,0.2)] mb-8 p-[30px] rounded-2xl flex flex-col items-center text-center md:w-[400px] mx-auto lg:w-full xl:w-[420px]"
                 >
                   <div className="bg-[#1DB655] p-[11.25px] w-fit text-[22px] rounded-full text-white mb-[11.25px]">
-                    <Icon />
+                    <Icon aria-hidden="true" />
                   </div>
 
                   <h3 className="text-[18.75px] font-bold mb-1.5">
@@ -121,6 +162,8 @@ function Contact() {
 
               <input
                 type="text"
+                id="name"
+                autoComplete="name"
                 name="name"
                 required
                 placeholder="Kumar"
@@ -136,6 +179,8 @@ function Contact() {
 
               <input
                 type="email"
+                id="email"
+                autoComplete="email"
                 name="email"
                 required
                 placeholder="kumar@example.com"
@@ -152,6 +197,8 @@ function Contact() {
               <input
                 type="tel"
                 name="phone"
+                autoComplete="tel"
+                id="phone"
                 required
                 placeholder="+91 12345 67890"
                 className="bg-[rgb(249,250,251)] w-full border border-[rgb(229,231,235)] py-[12px] px-[15px] rounded-[11px] outline-none"
@@ -166,6 +213,8 @@ function Contact() {
 
               <textarea
                 name="message"
+                id="message"
+                autoComplete="off"
                 required
                 rows="5"
                 placeholder="Your message here..."
@@ -184,7 +233,7 @@ function Contact() {
           </div>
         </div>
       </div>
-
+      <FAQSection faqData={contactFAQ} />
       <Footer />
     </div>
   );

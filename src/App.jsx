@@ -8,21 +8,23 @@ import Blog from "./pages/Blog";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Destinations from "./pages/Destinations";
+import Scrolltop from "./Components/Scrolltop";
 
 function App() {
-  return ( 
+  return (
     <>
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />}/>
-      <Route path="/Destinations" element={<Destinations />}/>
-      <Route path="/Services" element={<Services />}/>
-      <Route path="/Reviews" element={<Reviews />}/>
-      <Route path="/Blog" element={<Blog />}/>
-      <Route path="/About" element={<About />}/>
-      <Route path="/Contact" element={<Contact />}/>
-    </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Scrolltop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

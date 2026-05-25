@@ -2,12 +2,74 @@ import { FaPlay } from "react-icons/fa";
 import { reviews, VideoReviews } from "../data/testimonals";
 import Footer from "../Components/Footeer";
 import Header from "../Components/Header";
-
+import { Helmet } from "react-helmet-async";
+import FAQSection from "../Components/FAQSection";
+import { reviewsFAQ } from "../data/faq";
+import { useNavigate } from "react-router-dom";
 function Reviews() {
   const length = reviews.length;
-
+  const navigate = useNavigate();
   return (
     <div>
+      <Helmet>
+        <title>Student Success Stories and Reviews | Seyon Overseas</title>
+        <meta
+          name="description"
+          content="Read inspiring student success stories and reviews about studying abroad with Seyon Overseas. Hear firsthand experiences of students who achieved their dreams with our guidance."
+        />
+        <meta
+          name="keywords"
+          content="Student success stories, Study abroad reviews, Overseas education testimonials, Seyon Overseas, Student experiences studying abroad"
+        />
+        <meta name="author" content="Seyon Overseas" />
+        <meta name="robots" content="index, follow" />
+        <meta
+          property="og:title"
+          content="Student Success Stories and Reviews | Seyon Overseas"
+        />
+        <meta
+          property="og:description"
+          content="Read inspiring student success stories and reviews about studying abroad with Seyon Overseas. Hear firsthand experiences of students who achieved their dreams with our guidance."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://seyonoverseas.in/reviews" />
+        <link rel="canonical" href="https://seyonoverseas.in/reviews" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: reviewsFAQ.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Seyon Overseas",
+            url: "https://seyonoverseas.in",
+            review: reviews.map((review) => ({
+              "@type": "Review",
+              reviewBody: review.review,
+              reviewRating: {
+                "@type": "Rating",
+                ratingValue: review.rating,
+                bestRating: "5",
+              },
+              author: {
+                "@type": "Person",
+                name: review.name,
+              },
+            })),
+          })}
+        </script>
+      </Helmet>
       <Header />
       <div className=" py-[30px] px-[15px]">
         <h1 className="text-[rgb(24,31,37)] font-bold text-center text-[30.75px] leading-[37.5px] mb-5.5">
@@ -69,9 +131,9 @@ function Reviews() {
       </div>
       {/* video reviews */}
       <div className="py-[60px] px-[15px] bg-[rgb(239,246,255)]">
-        <h1 className="text-[rgb(24,31,37)] font-bold text-center text-[30.75px] leading-[37.5px] mb-5.5">
+        <h2 className="text-[rgb(24,31,37)] font-bold text-center text-[30.75px] leading-[37.5px] mb-5.5">
           Video Reviews
-        </h1>
+        </h2>
         <p className="text-[rgb(91,102,113)] text-[16.75px] text-center leading-[26.25px] mb-[30px]">
           Watch students share their study abroad experiences in their own words
         </p>
@@ -88,7 +150,7 @@ function Reviews() {
                   }}
                   className="bg bg-gradient-to-br from-[#0064F0] to-[#35D49F] text-white flex items-center justify-center text-[35px] rounded-t-2xl"
                 >
-                  <FaPlay />
+                  <FaPlay aria-hidden="true" />
                 </div>
                 <div className="p-[22.5px] flex flex-col gap-0.5">
                   <p className="text-[rgb(91,102,113)] text-[14px]">
@@ -156,10 +218,14 @@ function Reviews() {
           Join thousands of students who have achieved their study abroad
           dreams. Book your free consultation today!
         </p>
-        <button className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit ">
+        <button
+          onClick={() => navigate("/Contact")}
+          className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit "
+        >
           Book Free Consultation
         </button>
       </div>
+      <FAQSection faqData={reviewsFAQ} />
       <Footer />
     </div>
   );

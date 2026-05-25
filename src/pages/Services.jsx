@@ -6,17 +6,59 @@ import { RiTeamFill, RiBankLine } from "react-icons/ri";
 import { MdOutlineAccessTime, MdOutlineCurrencyRupee } from "react-icons/md";
 import { TiTickOutline } from "react-icons/ti";
 import Header from "../Components/Header";
-
+import { Helmet } from "react-helmet-async";
+import FAQSection from "../Components/FAQSection";
+import { servicesFAQ } from "../data/faq";
+import { useNavigate } from "react-router-dom";
 function Services() {
   const [showPopup, setShowPopup] = useState(false);
   const [viewMoreId, setViewMoreId] = useState(null);
-
+  const navigate = useNavigate();
   const selectedService = ServicesData.find(
     (service) => service.id === viewMoreId,
   );
   return (
     <div>
       <Header />
+      <Helmet>
+        <title>Our Comprehensive Services | Seyon Overseas</title>
+        <meta
+          name="description"
+          content="Explore our comprehensive range of services for studying abroad. We provide career counseling, SOP and LOR writing, Visa assistance,Scholarship Support, we provide end-to-end support for your international education journey."
+        />
+        <meta
+          name="keywords"
+          content="Study abroad consultancy, Visa assistance, SOP writing, Scholarship guidance, Overseas education services"
+        />
+        <meta name="author" content="Seyon Overseas" />
+
+        <meta name="robots" content="index, follow" />
+        <meta
+          property="og:title"
+          content="Our Comprehensive Services for Studying Abroad | Seyon Overseas"
+        />
+        <meta
+          property="og:description"
+          content="Explore our comprehensive range of services for studying abroad. We provide career counseling, SOP and LOR writing, Visa assistance,Scholarship Support, we provide end-to-end support for your international education journey."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://seyonoverseas.in/services" />
+        <link rel="canonical" href="https://seyonoverseas.in/services" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: servicesFAQ.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          })}
+        </script>
+      </Helmet>
       <div className="mt-[30px]">
         <div className=" px-[15px]">
           <h1 className="text-[rgb(24,31,37)] font-bold text-center text-[30.75px] leading-[37.5px] mb-5.5">
@@ -42,7 +84,7 @@ function Services() {
                   className="bg-white shadow-[0px_0px_10px_rgba(0,0,0,0.2)] mb-8 p-[30px] rounded-2xl "
                 >
                   <div className="bg-[rgb(240,250,249)] p-[11.25px] w-fit text-[22px] rounded-[11.25px] text-[rgb(0,100,240)] mb-[11.25px]">
-                    <Icon />
+                    <Icon aria-hidden="true" />
                   </div>
                   <h3 className="text-[18.75px] font-bold mb-3">
                     {service.name}
@@ -50,7 +92,8 @@ function Services() {
                   <p className="text-[rgb(91,102,113)] text-[14px] leading-[24px] ">
                     {service.description}
                   </p>
-                  <div
+                  <button
+                    type="button"
                     className="flex items-center gap-3 text-[rgb(0,100,240)] font-semibold mt-3"
                     onClick={() => {
                       setShowPopup(true);
@@ -59,7 +102,7 @@ function Services() {
                   >
                     <p>View more</p>
                     <FaArrowRight />
-                  </div>
+                  </button>
                 </div>
               );
             })}
@@ -69,7 +112,11 @@ function Services() {
             (() => {
               const Icon = selectedService.icon;
               return (
-                <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-1 px-[15px]">
+                <div
+                  role="dialog"
+                  aria-modal="true"
+                  className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-[15px]"
+                >
                   <div className="bg-white p-6 rounded-2xl w-[400px]">
                     <div className="hidden bg bg-gradient-to-r from-[#0064F0] to-[#35D49F] text-white p-2 w-fit rounded-md">
                       <Icon className="text-3xl" />
@@ -117,7 +164,7 @@ function Services() {
                   className="flex flex-col items-center mb-6 bg-white p-[30px] rounded-2xl shadow-[0px_0px_10px_rgba(0,0,0,0.1)]"
                 >
                   <div className="bg-gradient-to-r from-[#0064F0] to-[#35D49F] rounded-full p-4 text-white text-3xl mb-4.75">
-                    <Icon />
+                    <Icon aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="text-[18.75px] font-bold mb-3 text-center">
@@ -140,10 +187,14 @@ function Services() {
             Our expert consultants will help you select the perfect country and
             university based on your profile and goals.
           </p>
-          <button className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit ">
+          <button
+            onClick={() => navigate("/contact")}
+            className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit "
+          >
             Book Free Consultation
           </button>
         </div>
+        <FAQSection faqData={servicesFAQ} />
         <Footer />
       </div>
     </div>

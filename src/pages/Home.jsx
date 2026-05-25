@@ -6,20 +6,68 @@ import eligibility from "../data/eligibility";
 import { LuCircleCheckBig } from "react-icons/lu";
 import Footer from "../Components/Footeer";
 import Header from "../Components/Header";
+import FAQSection from "../Components/FAQSection";
+import { homeFAQ } from "../data/faq";
+import { useNavigate } from "react-router-dom";
 function Home() {
+  const navigate = useNavigate();
   return (
     <div className="">
       <Helmet>
-        <title>Seyon Overseas | Study Abroad Without Stress</title>
-        <meta name="description" content="Study Abroad without stress" />
+        <title>
+          {" "}
+          Best Overseas Education Consultancy in Namakkal | Seyon Overseas
+        </title>
+        <meta
+          name="description"
+          content="Seyon Overseas is a trusted overseas education consultancy in Namakkal helping students study in Canada, UK, USA, Australia and more with expert visa, admission and scholarship support."
+        />
+        <meta
+          name="keywords"
+          content="Overseas education consultancy in Namakkal, Study abroad consultants, Canada education consultants, UK student visa, Australia education consultancy, Seyon Overseas"
+        />
+        <meta name="author" content="Seyon Overseas" />
+        <meta name="robots" content="index, follow" />
         <meta
           property="og:title"
-          content="Seyon Overseas | Study Abroad Without Stress"
+          content="Best Overseas Education Consultancy in Namakkal | Seyon Overseas"
         />
         <meta
           property="og:description"
-          content="Best Overseas consultancy company in Namakkal"
+          content="Best Overseas Education Consultancy in Namakkal that helps student to study in Canada, UK, USA, Australia and more. We provide end-to-end support for your study abroad journey."
         />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://seyonoverseas.in/" />
+        <link rel="canonical" href="https://seyonoverseas.in/" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: homeFAQ.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            name: "Seyon Overseas",
+            url: "https://seyonoverseas.in",
+            description:
+              "Best OverSeas Education Consultancy in Namakkal that helps student to study in Canada, UK, USA, Australia and more. We provide end-to-end support for your study abroad journey.",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Namakkal",
+              addressCountry: "India",
+            },
+          })}
+        </script>
       </Helmet>
       <Header />
       {/* Hero Section */}
@@ -154,6 +202,7 @@ function Home() {
         </p>
         <div className=" grid md:grid-cols-2 gap-x-5 lg:grid-cols-3 xl:grid-cols-4">
           {reviews.map((review) => {
+            const name = review.name.slice(0, 1);
             return (
               <div
                 key={review.id}
@@ -178,7 +227,7 @@ function Home() {
                 </p>
                 <div className="flex flex-row items-center gap-[15px]">
                   <div className="bg bg-gradient-to-r from-[#0064F0] to-[#35D49F]  p-3 w-10 h-10  flex items-center justify-center rounded-full text-white text-[15px] font-bold">
-                    R
+                    {name}
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-[15px]">
@@ -214,7 +263,7 @@ function Home() {
         </p>
         {eligibility.map((item) => (
           <div key={item.id} className="flex gap-2  mb-1.5 md:ml-[225px]">
-            <LuCircleCheckBig className="text-green-500 text-[20px] mt-1" />
+            <LuCircleCheckBig aria-hidden="true" className="text-green-500 text-[20px] mt-1" />
             <p className="text-[15px] font-normal ">{item.discription}</p>
           </div>
         ))}
@@ -264,10 +313,14 @@ function Home() {
         <p className="text-[rgb(239,246,255)] text-[16.875px] leading-[26px] text-center max-w-[630px] mb-[30px]">
           Start your study abroad journey today with expert guidance and support
         </p>
-        <button className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit ">
+        <button
+          onclick={() => navigate("/contact")}
+          className="bg-[rgb(243,244,246)] text-[rgb(0,100,240)] rounded-md font-bold  px-[30px] py-[15px] w-fit "
+        >
           Book Free Consultation{" "}
         </button>
       </div>
+      <FAQSection faqData={homeFAQ} />
       {/* Footer */}
       <Footer />
     </div>
