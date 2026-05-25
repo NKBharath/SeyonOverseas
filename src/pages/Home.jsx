@@ -14,7 +14,7 @@ function Home() {
   return (
     <div className="">
       <Helmet>
-        <meta name="google-site-verification" content=" google0b592912acd99920" />
+        <meta name="google-site-verification" content="0b592912acd99920" />
         <title>
           Best Overseas Education Consultancy in Namakkal | Seyon Overseas
         </title>
