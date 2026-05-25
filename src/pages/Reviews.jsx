@@ -88,7 +88,9 @@ function Reviews() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 mx-[15px]">
           {reviews.map((review) => {
             const name = review.name.slice(0, 1);
-
+            if (length === 0) {
+              return <div> no reviews yet</div>;
+            }
             return (
               <div
                 key={review.id}
